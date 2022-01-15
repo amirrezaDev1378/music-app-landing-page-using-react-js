@@ -108,7 +108,11 @@ const useStyles = makeStyles({
         left: 0,
         zIndex: 1,
         display: "flex",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundPositionX:"center",
+        '@media (max-width:550px)': {
+            backgroundPositionX:"-650px",
+        }
     },
     Section4: {
         backgroundColor: "#161A1A",

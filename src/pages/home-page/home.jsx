@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import MusicShow from "../components/home/musicShow";
 import useStyles from "./home.style";
 import Button from "@mui/material/Button";
@@ -42,16 +42,18 @@ function Home(props) {
         });
         // AOS.refresh();
     }, []);
+    const [TextMarginStyle, setTextMarginStyle] = useState('0');
     const styles = useStyles();
     const icons = FourthScrIcons;
     const theme = useTheme();
-    const isSmaller450 = useMediaQuery('@media (max-width:450px)')
+    const isSmaller450 = useMediaQuery('@media (max-width:450px)');
+    const isUnder900PX = useMediaQuery('@media (max-width:900px)')
     const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
     const isMedium = useMediaQuery(theme.breakpoints.down('md'));
-
     useEffect(() => {
-        console.log("  is large  " + isLarge, "   Is medium  " + isMedium)
-    }, [isLarge, isMedium]);
+        console.log("  is large  " + isLarge, "   Is medium  " + isMedium);
+        isUnder900PX ? setTextMarginStyle('0') : setTextMarginStyle("150px");
+    }, [isLarge, isMedium, window.innerWidth]);
 
     const ButtonDirection = isSmaller450 ? 'column' : 'row';
     return (
@@ -101,7 +103,9 @@ function Home(props) {
                 {isMedium ? <br/> : ``}{isMedium ? <br/> : ``}{isMedium ? <br/> : ``}
             </section>
             <section className={styles.Section3}>
-                <Grid data-aos-delay="100" data-aos="fade-right" style={{marginLeft: "150px"}} xs={12} md={3}>
+
+
+                <Grid data-aos-delay="100" data-aos="fade-right" style={{marginLeft:TextMarginStyle}} xs={12} md={3}>
                     <h2 style={{color: "black"}}>
                         Listen anytime, anywhere
                     </h2>
