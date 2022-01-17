@@ -11,7 +11,7 @@ import {useTheme} from '@mui/material/styles';
 
 function PremiumOptions(props) {
     return (
-        <Grid direction={"row"} justifyContent={"center"} alignItems={"center"}>
+        <Grid style={{display: "flex"}} direction={{xs: "column"}} justifyContent={"center"} alignItems={"center"}>
             <div style={{
                 backgroundColor: "#363535",
                 width: 200,
@@ -48,11 +48,14 @@ function Home(props) {
     const theme = useTheme();
     const isSmaller450 = useMediaQuery('@media (max-width:450px)');
     const isUnder900PX = useMediaQuery('@media (max-width:900px)')
+    const isUnder800PX = useMediaQuery('@media (max-width:800px)')
     const isLarge = useMediaQuery(theme.breakpoints.up('lg'));
     const isMedium = useMediaQuery(theme.breakpoints.down('md'));
+    const [Section4Direction, setSection4Direction] = useState('row');
     useEffect(() => {
         console.log("  is large  " + isLarge, "   Is medium  " + isMedium);
         isUnder900PX ? setTextMarginStyle('0') : setTextMarginStyle("150px");
+        isUnder800PX ? setSection4Direction('column-reverse') : setSection4Direction("row");
     }, [isLarge, isMedium, window.innerWidth]);
 
     const ButtonDirection = isSmaller450 ? 'column' : 'row';
@@ -66,8 +69,8 @@ function Home(props) {
                 </h1>
 
                 <Stack alignItems={"center"} className={styles.Sec1ButtonGroup} spacing={2} direction={ButtonDirection}>
-                    <Button className={styles.premiumButton} style={{width:isSmaller450 ? `70%` : `initial`}} variant="contained">MUSICBOX PREMIUM</Button>
-                    <Button style={{color: "white", borderColor: "white" , width:isSmaller450 ? `70%` : `initial`}} variant="outlined">MUSICBOX FREE</Button>
+                    <Button className={styles.premiumButton} style={{width: isSmaller450 ? `70%` : `initial`}} variant="contained">MUSICBOX PREMIUM</Button>
+                    <Button style={{color: "white", borderColor: "white", width: isSmaller450 ? `70%` : `initial`}} variant="outlined">MUSICBOX FREE</Button>
                 </Stack>
                 <h3 style={{color: "white", marginTop: 20}}>
 
@@ -105,7 +108,7 @@ function Home(props) {
             <section className={styles.Section3}>
 
 
-                <Grid data-aos-delay="100" data-aos="fade-right" style={{marginLeft:TextMarginStyle}} xs={12} md={3}>
+                <Grid data-aos-delay="100" data-aos="fade-right" style={{marginLeft: TextMarginStyle}} xs={12} md={3}>
                     <h2 style={{color: "black"}}>
                         Listen anytime, anywhere
                     </h2>
@@ -117,8 +120,8 @@ function Home(props) {
                 </Grid>
             </section>
             <section className={styles.Section4}>
-                <Stack justifyContent={"center"} alignItems={"center"} direction={"row"} spacing={30}>
-                    <Grid data-aos="fade-right" md={4}>
+                <Stack justifyContent={"center"} alignItems={"center"} direction={Section4Direction} spacing={30}>
+                    <Grid className={styles.Section4Text} data-aos="fade-right" xs={12} md={6}>
                         <h1>
                             <b>
                                 Find the music you want
@@ -132,7 +135,9 @@ function Home(props) {
                             that is playing near you.
                         </h3>
                     </Grid>
-                    <img src={FourthScrImage} alt="image"/>
+                    <Grid className={styles.Sec4imageParent} xs={12} md={6}>
+                        <img src={FourthScrImage} alt="image"/>
+                    </Grid>
                 </Stack>
                 <br/>
                 <br/>
@@ -145,7 +150,7 @@ function Home(props) {
                     <br/>
                     <br/>
 
-                    <Stack direction={"row"} spacing={3} justifyContent={"center"}>
+                    <Stack direction={{md: "row", xs: "column"}} spacing={3} justifyContent={"center"}>
                         <PremiumOptions name={"Offline mode."} icon={icons.icon1} description={"Save and listen anywhere."}/>
                         <PremiumOptions name={"High quality audio."} icon={icons.icon2} description={"Enjoy the full range of sound."}/>
                         <PremiumOptions name={"No ads."} icon={icons.icon3} description={"Enjoy nonstop music."}/>
@@ -159,7 +164,7 @@ function Home(props) {
 
                         <br/>
                         <br/>
-                        <Stack justifyContent={"center"} direction={"row"} spacing={5}>
+                        <Stack alignItems={"center"} justifyContent={"center"} direction={{md: "row", xs: "column"}} spacing={5}>
 
                             <div className={styles.BorderBox}>
                                 <Grid justifyContent={"flex-start"}>
@@ -221,11 +226,20 @@ function Home(props) {
                         <br/>
                         <br/>
                         <br/>
-                        <Stack alignItems={"center"} justifyContent={"space-evenly"} direction={"row"} spacing={5}>
-                            <Button className={styles.ButtonAnimation} style={{color: "white", borderColor: "white", borderRadius: 30, padding: 10}}
-                                    variant="outlined">GET MUSICBOX FREE</Button>
-                            <Button style={{margin: "0 !important", borderRadius: 30, padding: 10}}
-                                    className={styles.premiumButton + " " + styles.ButtonAnimation} variant="contained">GET MUSICBOX PREMIUM</Button>
+                        <Stack alignItems={"center"} justifyContent={"space-evenly"} direction={{sm: "row" , xs:"column"}} spacing={5}>
+                            <Button
+                                className={styles.ButtonAnimation}
+                                style={{color: "white", borderColor: "white", borderRadius: 30, padding: 10}}
+                                variant="outlined">
+                                GET MUSICBOX FREE
+                            </Button>
+                            <Button
+                                style={{margin: "0 !important", borderRadius: 30, padding: 10}}
+                                className={styles.premiumButton + " " + styles.ButtonAnimation}
+                                variant="contained"
+                            >
+                                GET MUSICBOX PREMIUM
+                            </Button>
                         </Stack>
                         <br/>
                         <br/>

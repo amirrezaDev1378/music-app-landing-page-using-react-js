@@ -30,7 +30,7 @@ function Footer(props) {
             <br/>
             <br/>
             <br/>
-            <Stack justifyContent={"center"} direction={"row"} spacing={30}>
+            <Stack alignItems={"center"} justifyContent={"center"} direction={{md: "row" , xs:"column"}} spacing={{md:30,xs:10}}>
                 <FooterLinks
                     title={"MUSICBOX"}
                     links={[

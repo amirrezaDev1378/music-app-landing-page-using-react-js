@@ -19,18 +19,18 @@ const useStyles = makeStyles({
             fontSize: "50pt",
             textAlign: "center",
             margin: 0,
-            '@media (max-width:900px)':{
+            '@media (max-width:900px)': {
                 fontSize: "35pt"
             },
-            '@media (max-width:620px)':{
+            '@media (max-width:620px)': {
                 fontSize: "25pt"
             },
-            '@media (max-width:450px)':{
+            '@media (max-width:450px)': {
                 fontSize: "20pt"
             }
         },
-        "&> h3":{
-            '@media (max-width:450px)':{
+        "&> h3": {
+            '@media (max-width:450px)': {
                 fontSize: "13pt"
             }
         }
@@ -109,9 +109,9 @@ const useStyles = makeStyles({
         zIndex: 1,
         display: "flex",
         alignItems: "center",
-        backgroundPositionX:"center",
+        backgroundPositionX: "center",
         '@media (max-width:550px)': {
-            backgroundPositionX:"-650px",
+            backgroundPositionX: "-650px",
         }
     },
     Section4: {
@@ -123,7 +123,41 @@ const useStyles = makeStyles({
         zIndex: 1,
         display: "flex",
         alignItems: "center",
-        flexDirection: "column"
+        flexDirection: "column",
+        '&  img': {
+            marginLeft: '0 !important',
+            '@media (max-width:1400px)': {
+                width: '100%'
+            }
+        },
+
+
+    },
+    Sec4imageParent:{
+        margin : '0 !important',
+        '@media (max-width:800px)': {
+            width: '70%'
+        }
+
+    },
+    Section4Text:{
+      paddingLeft:50,
+        '@media (max-width:800px)': {
+            padding:"0 !important",
+            width:"80%",
+            paddingBottom:"80px !important"
+        },
+        '@media (max-width:550px)': {
+            width:"90%",
+        },
+        '@media (max-width:350px)': {
+            '&> h1':{
+                fontSize:"14pt"
+            },
+            "&> h3":{
+                fontSize:"12pt"
+            }
+        }
     },
     WhyGoPremiumSection: {},
 
@@ -161,7 +195,15 @@ const useStyles = makeStyles({
         "&> p , h3": {
             width: "fit-content"
         },
-        padding: 20
+        padding: 20,
+        "@media (max-width:900px)":{
+            width:"unset",
+            maxWidth:"unset"
+        },
+        "@media (max-width:500px)":{
+            width:"70%",
+            maxWidth:"70%"
+        }
 
     },
     BorderBox: {
@@ -172,12 +214,20 @@ const useStyles = makeStyles({
         "&> p , h3": {
             width: "fit-content"
         },
+        "@media (max-width:900px)":{
+            width:"unset",
+            maxWidth:"unset"
+        },
+        "@media (max-width:500px)":{
+            width:"60%",
+            maxWidth:"60%"
+        }
     },
     ButtonAnimation: {
         transition: "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms , transform 0.7s !important",
         "&:hover": {
             transform: "scale(1.15)"
-        }
+        },
 
     }
 });
